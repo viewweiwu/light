@@ -1,11 +1,25 @@
 import React, { useState } from 'react'
+import GitHubButton from 'react-github-btn'
 
 function App() {
-  const [list, setList] = useState([
-    [1, 0, 1],
-    [0, 1, 0],
-    [1, 0, 1]
-  ])
+
+  const getRandom = (min, max) => {
+    return Math.floor(Math.random() * 2)
+  }
+
+  const getRandomData = () => {
+    let list = []
+    for (let i = 0; i < 3; i++) {
+      let row = []
+      for (let j = 0; j < 3; j++) {
+        row.push(getRandom())
+      }
+      list.push(row)
+    }
+    return list
+  }
+
+  const [list, setList] = useState(getRandomData())
 
   const handleClick = (i, j) => {
     let newList = [...list]
@@ -55,22 +69,6 @@ function App() {
     setList(list)
   }
 
-  const getRandomData = () => {
-    let list = []
-    for (let i = 0; i < 3; i++) {
-      let row = []
-      for (let j = 0; j < 3; j++) {
-        row.push(getRandom())
-      }
-      list.push(row)
-    }
-    return list
-  }
-
-  const getRandom = (min, max) => {
-    return Math.floor(Math.random() * 2)
-  }
-
   return (
     <div className="app">
       <button className="btn-start" onClick={ startGame }>start game</button>
@@ -82,6 +80,9 @@ function App() {
             )
           )
         }
+      </div>
+      <div className="btn-github">
+        <GitHubButton href="https://github.com/viewweiwu/light" data-size="large" aria-label="Star viewweiwu/light on GitHub">View On Github</GitHubButton>
       </div>
     </div>
   )

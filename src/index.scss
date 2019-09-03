@@ -63,3 +63,13 @@ code {
     filter: brightness(0.9);
   }
 }
+.btn-github {
+  top: 0;
+  right: 0;
+  position: absolute;
+  opacity: .1;
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
