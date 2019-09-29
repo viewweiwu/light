@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import GitHubButton from 'react-github-btn'
 
 function App() {
@@ -41,12 +41,6 @@ function App() {
       toggleItem(newList, i + 1, j)
     }
     setList(newList)
-    let result = checkList(newList)
-    setTimeout(() => {
-      if (result) {
-        alert('win')
-      }
-    })
   }
 
   const toggleItem = (newList, i, j) => {
@@ -68,6 +62,13 @@ function App() {
     let list = getRandomData()
     setList(list)
   }
+
+useEffect(() => {
+  let result = checkList(list)
+  if (result) {
+    alert('win')
+  }
+}, [list])
 
   return (
     <div className="app">
